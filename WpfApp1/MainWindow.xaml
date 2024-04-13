@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVOP_připomínač"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1200">
+        Title="OsobníPřipomínač" Height="1080" Width="1920">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,38 +30,148 @@
             <Image Source="\134224_add_plus_new_icon.png"></Image>
         </Button>
         <Border Grid.Row="1" Grid.ColumnSpan="6" Background="Black">
-            <TextBlock Text="Neopakující se události" Foreground="White" FontSize="64" FontWeight="ExtraBold" FontFamily="Saira SemiCondensed" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="Opakující se události" Foreground="White" FontSize="64" FontWeight="ExtraBold" FontFamily="Saira SemiCondensed" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             
         </Border>
         <Border Background="#353232" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="2">
-            <ListView x:Name="myListViewOpakovane">
+            <ListView x:Name="myListViewOpakovane" ItemsSource="{Binding OpakovaneUdalosti}" Grid.ColumnSpan="5" Grid.RowSpan="2" Background="#625C5C" Foreground="White" FontSize="40" FontWeight="Bold" FontFamily="Saira SemiCondensed">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Event Name" DisplayMemberBinding="{Binding Jmeno}"/>
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
-                        <GridViewColumn Header="Warning" DisplayMemberBinding="{Binding Warning}"/>
+                        <GridViewColumn Width="480"  DisplayMemberBinding="{Binding Jmeno}" >
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}" >
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                        </GridViewColumn>
+                        <GridViewColumn Width="480" DisplayMemberBinding="{Binding Date}">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                        </GridViewColumn>
+                        <GridViewColumn  Width="480"  DisplayMemberBinding="{Binding Warning}">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                        </GridViewColumn>
+                        <GridViewColumn Width="480">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}" >
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+                                        <Button Name="edit" Click="EditButton_Click"  Margin="5" Width="70" Height="70" Background="Cyan">
+                                                <Image Source="\pen.png"></Image>
+                                            </Button>
+
+                                        <Button Name="delete" Click="DeleteButton_Click" Margin="5" Width="70" Height="70" Background="Cyan">
+                                            <Image Source="\trash.png"></Image>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
             </ListView>
 
         </Border>
 
         <Border Grid.Row="4" Grid.ColumnSpan="6" Background="Black">
-            <TextBlock Text="Opakující se události" Foreground="White" FontSize="64" FontWeight="ExtraBold" FontFamily="Saira SemiCondensed" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="Neopakující se události" Foreground="White" FontSize="64" FontWeight="ExtraBold" FontFamily="Saira SemiCondensed" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </Border>
 
         <Border Background="#353232" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="5">
-            <ListView x:Name="myListViewNeopakovane">
+            <ListView x:Name="myListViewNeopakovane" ItemsSource="{Binding NeopakovaneUdalosti}" Grid.ColumnSpan="5" Grid.RowSpan="2" Background="#625C5C" Foreground="White" FontSize="40" FontWeight="Bold" FontFamily="Saira SemiCondensed">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Event Name" DisplayMemberBinding="{Binding Jmeno}"/>
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
-                        <GridViewColumn Header="Warning" DisplayMemberBinding="{Binding Warning}"/>
-                        <GridViewColumn Header="count" DisplayMemberBinding="{Binding }"/>
+                        <GridViewColumn Width="480"  DisplayMemberBinding="{Binding Jmeno}" >
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}" >
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                        </GridViewColumn>
+                        <GridViewColumn Width="480" DisplayMemberBinding="{Binding Date}">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                        </GridViewColumn>
+                        <GridViewColumn  Width="480"  DisplayMemberBinding="{Binding Warning}">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                        </GridViewColumn>
+                        <GridViewColumn Width="480">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}" >
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+                                        <Button Name="edit" Click="EditButton_Click" Margin="5" Width="70" Height="70" Background="Cyan">
+                                            <Image Source="\pen.png"></Image>
+                                        </Button>
+
+                                        <Button Name="delete" Click="DeleteButton_Click" Margin="5" Width="70" Height="70" Background="Cyan">
+                                            <Image Source="\trash.png"></Image>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
             </ListView>
 
         </Border>
+        
     </Grid>
+
+    
 </Window>
+
+
