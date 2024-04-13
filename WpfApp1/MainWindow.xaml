@@ -37,26 +37,78 @@
             <ListView x:Name="myListViewOpakovane" ItemsSource="{Binding OpakovaneUdalosti}" Grid.ColumnSpan="5" Grid.RowSpan="2" Background="#625C5C" Foreground="White" FontSize="40" FontWeight="Bold" FontFamily="Saira SemiCondensed">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="480"  DisplayMemberBinding="{Binding Jmeno}" >
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}" >
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
+                        <GridViewColumn Width="480" >
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader>
+                                    <GridViewColumnHeader.Content>
+                                        <TextBlock Text="Název události" Foreground="White" />
+                                    </GridViewColumnHeader.Content>
+                                    <GridViewColumnHeader.Template>
+                                        <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                            <Border Background="#181515">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </GridViewColumnHeader.Template>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Jmeno}" FontSize="35" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Width="480" DisplayMemberBinding="{Binding Date}">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
+                        <GridViewColumn Width="480">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader>
+                                    <GridViewColumnHeader.Content>
+                                        <TextBlock Text="Čas" Foreground="White" />
+                                    </GridViewColumnHeader.Content>
+                                    <GridViewColumnHeader.Template>
+                                        <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                            <Border Background="#181515">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </GridViewColumnHeader.Template>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                         <Run Text="Datum: " FontWeight="Bold"  FontSize="35"/>
+                                         <Run Text="{Binding Date, StringFormat='dd/MM'}"  FontSize="35"/>
+                                         <Run Text="  Čas: "  FontSize="35"/>
+                                         <Run Text="{Binding Date, StringFormat='HH:mm'}"  FontSize="35"/>  
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn  Width="480"  DisplayMemberBinding="{Binding Warning}">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
+                        <GridViewColumn Width="480">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader>
+                                    <GridViewColumnHeader.Content>
+                                        <TextBlock Text="Varování" Foreground="White" />
+                                    </GridViewColumnHeader.Content>
+                                    <GridViewColumnHeader.Template>
+                                        <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                            <Border Background="#181515">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </GridViewColumnHeader.Template>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                         <Run Text="Datum: " FontWeight="Bold" FontSize="35"/>
+                                         <Run Text="{Binding Warning, StringFormat='dd/MM'}" FontSize="35"/>
+                                         <Run Text="  Čas: " FontSize="35"/>
+                                         <Run Text="{Binding Warning, StringFormat='HH:mm'}" FontSize="35"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Width="480">
                             <GridViewColumn.HeaderContainerStyle>
@@ -68,9 +120,9 @@
                                 <DataTemplate >
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
-                                        <Button Name="edit" Click="EditButton_Click"  Margin="5" Width="70" Height="70" Background="Cyan">
-                                                <Image Source="\pen.png"></Image>
-                                            </Button>
+                                        <Button Name="edit" Click="EditButton_Click" Margin="5" Width="70" Height="70" Background="Cyan">
+                                            <Image Source="\pen.png"></Image>
+                                        </Button>
 
                                         <Button Name="delete" Click="DeleteButton_Click" Margin="5" Width="70" Height="70" Background="Cyan">
                                             <Image Source="\trash.png"></Image>
@@ -107,26 +159,78 @@
             <ListView x:Name="myListViewNeopakovane" ItemsSource="{Binding NeopakovaneUdalosti}" Grid.ColumnSpan="5" Grid.RowSpan="2" Background="#625C5C" Foreground="White" FontSize="40" FontWeight="Bold" FontFamily="Saira SemiCondensed">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="480"  DisplayMemberBinding="{Binding Jmeno}" >
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}" >
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
+                        <GridViewColumn Width="480" >
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader>
+                                    <GridViewColumnHeader.Content>
+                                        <TextBlock Text="Název události" Foreground="White" />
+                                    </GridViewColumnHeader.Content>
+                                    <GridViewColumnHeader.Template>
+                                        <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                            <Border Background="#181515">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </GridViewColumnHeader.Template>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Jmeno}" FontSize="35" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Width="480" DisplayMemberBinding="{Binding Date}">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
+                        <GridViewColumn Width="480">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader>
+                                    <GridViewColumnHeader.Content>
+                                        <TextBlock Text="Čas" Foreground="White" />
+                                    </GridViewColumnHeader.Content>
+                                    <GridViewColumnHeader.Template>
+                                        <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                            <Border Background="#181515">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </GridViewColumnHeader.Template>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                      <Run Text="Datum: " FontWeight="Bold"  FontSize="35"/>
+                      <Run Text="{Binding Date, StringFormat='dd/MM'}"  FontSize="35"/>
+                      <Run Text="  Čas: "  FontSize="35"/>
+                      <Run Text="{Binding Date, StringFormat='HH:mm'}"  FontSize="35"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn  Width="480"  DisplayMemberBinding="{Binding Warning}">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
+                        <GridViewColumn Width="480">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader>
+                                    <GridViewColumnHeader.Content>
+                                        <TextBlock Text="Varování" Foreground="White" />
+                                    </GridViewColumnHeader.Content>
+                                    <GridViewColumnHeader.Template>
+                                        <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                            <Border Background="#181515">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </GridViewColumnHeader.Template>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                      <Run Text="Datum: " FontWeight="Bold" FontSize="35"/>
+                      <Run Text="{Binding Warning, StringFormat='dd/MM'}" FontSize="35"/>
+                      <Run Text="  Čas: " FontSize="35"/>
+                      <Run Text="{Binding Warning, StringFormat='HH:mm'}" FontSize="35"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Width="480">
                             <GridViewColumn.HeaderContainerStyle>
